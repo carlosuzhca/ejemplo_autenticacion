@@ -1,0 +1,39 @@
+plugins {
+    id "com.android.application"
+    id "kotlin-android"
+    id "dev.flutter.flutter-gradle-plugin"
+    id "com.google.gms.google-services"  // Plugin de Google Services agregado aquí
+}
+
+android {
+    namespace = "com.example.ejemplo_autenticacion"
+    compileSdkVersion 30  // Especifica directamente la versión de SDK
+    ndkVersion "21.3.6528147"  // Asegúrate de tener la versión correcta del NDK si es necesario
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+
+    defaultConfig {
+        applicationId "com.example.ejemplo_autenticacion"  // ID de la aplicación registrado en Firebase
+        minSdkVersion 19  // Firebase requiere al menos la versión 19
+        targetSdkVersion 30  // Asegúrate de que esto cumpla con los requisitos de Firebase y Flutter
+        versionCode 1  // Puedes ajustar según la versión de tu aplicación
+        versionName "1.0"  // Puedes ajustar según la versión de tu aplicación
+    }
+
+    buildTypes {
+        release {
+            signingConfig signingConfigs.debug  // Configuración temporal para modo release
+        }
+    }
+}
+
+flutter {
+    source = "../.."
+}
